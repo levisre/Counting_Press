@@ -42,6 +42,19 @@
             this.SaveDataMainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.loadDataMainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMainMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.nonSystemKeyLbl = new System.Windows.Forms.Label();
+            this.systemKeyLbl = new System.Windows.Forms.Label();
+            this.staticLabel1 = new System.Windows.Forms.Label();
+            this.staticLabel2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.detailSystemKey = new System.Windows.Forms.ToolTip(this.components);
+            this.detailNonSystemKey = new System.Windows.Forms.ToolTip(this.components);
+            this.hintToClear = new System.Windows.Forms.ToolTip(this.components);
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myBlogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gitRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -93,23 +106,24 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-
             // countLbl
             // 
             this.countLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countLbl.ForeColor = System.Drawing.Color.Green;
-            this.countLbl.Location = new System.Drawing.Point(12, 34);
+            this.countLbl.Location = new System.Drawing.Point(0, 49);
             this.countLbl.Name = "countLbl";
-            this.countLbl.Size = new System.Drawing.Size(252, 37);
+            this.countLbl.Size = new System.Drawing.Size(276, 37);
             this.countLbl.TabIndex = 3;
             this.countLbl.Text = "0";
             this.countLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.hintToClear.SetToolTip(this.countLbl, "Double click here to Clear the counter");
             this.countLbl.DoubleClick += new System.EventHandler(this.countLbl_DoubleClick);
             // 
             // mainMenu
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(276, 24);
@@ -124,34 +138,146 @@
             this.exitMainMenu});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.fileToolStripMenuItem.Text = "Main";
+            this.fileToolStripMenuItem.Text = "&Main";
             // 
             // SaveDataMainMenu
             // 
             this.SaveDataMainMenu.Name = "SaveDataMainMenu";
             this.SaveDataMainMenu.Size = new System.Drawing.Size(152, 22);
-            this.SaveDataMainMenu.Text = "Save Data";
+            this.SaveDataMainMenu.Text = "&Save Data";
+            this.SaveDataMainMenu.ToolTipText = "Save the Counter to file, located along side with this program";
             this.SaveDataMainMenu.Click += new System.EventHandler(this.SaveDataMainMenu_Click);
             // 
             // loadDataMainMenu
             // 
             this.loadDataMainMenu.Name = "loadDataMainMenu";
             this.loadDataMainMenu.Size = new System.Drawing.Size(152, 22);
-            this.loadDataMainMenu.Text = "Load Data";
+            this.loadDataMainMenu.Text = "&Load Data";
+            this.loadDataMainMenu.ToolTipText = "Load the previous saved Counter data";
             this.loadDataMainMenu.Click += new System.EventHandler(this.loadDataMainMenu_Click);
             // 
             // exitMainMenu
             // 
             this.exitMainMenu.Name = "exitMainMenu";
             this.exitMainMenu.Size = new System.Drawing.Size(152, 22);
-            this.exitMainMenu.Text = "Exit";
+            this.exitMainMenu.Text = "&Exit";
             this.exitMainMenu.Click += new System.EventHandler(this.exitMainMenu_Click);
+            // 
+            // nonSystemKeyLbl
+            // 
+            this.nonSystemKeyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nonSystemKeyLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.nonSystemKeyLbl.Location = new System.Drawing.Point(0, 111);
+            this.nonSystemKeyLbl.Name = "nonSystemKeyLbl";
+            this.nonSystemKeyLbl.Size = new System.Drawing.Size(276, 33);
+            this.nonSystemKeyLbl.TabIndex = 5;
+            this.nonSystemKeyLbl.Text = "0";
+            this.nonSystemKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.detailNonSystemKey.SetToolTip(this.nonSystemKeyLbl, "Non System Key is all the key shown in the Keyboard");
+            // 
+            // systemKeyLbl
+            // 
+            this.systemKeyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.systemKeyLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.systemKeyLbl.Location = new System.Drawing.Point(4, 175);
+            this.systemKeyLbl.Name = "systemKeyLbl";
+            this.systemKeyLbl.Size = new System.Drawing.Size(272, 36);
+            this.systemKeyLbl.TabIndex = 6;
+            this.systemKeyLbl.Text = "0";
+            this.systemKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.detailSystemKey.SetToolTip(this.systemKeyLbl, "System Key recognized when you pressing key with Alt Key is being held down");
+            // 
+            // staticLabel1
+            // 
+            this.staticLabel1.AutoSize = true;
+            this.staticLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staticLabel1.Location = new System.Drawing.Point(4, 36);
+            this.staticLabel1.Name = "staticLabel1";
+            this.staticLabel1.Size = new System.Drawing.Size(110, 13);
+            this.staticLabel1.TabIndex = 7;
+            this.staticLabel1.Text = "Total Key Pressed";
+            // 
+            // staticLabel2
+            // 
+            this.staticLabel2.AutoSize = true;
+            this.staticLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staticLabel2.Location = new System.Drawing.Point(4, 90);
+            this.staticLabel2.Name = "staticLabel2";
+            this.staticLabel2.Size = new System.Drawing.Size(186, 13);
+            this.staticLabel2.TabIndex = 8;
+            this.staticLabel2.Text = "Total Non-System Keys pressed";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 153);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Total System Keys Pressed";
+            // 
+            // detailSystemKey
+            // 
+            this.detailSystemKey.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // detailNonSystemKey
+            // 
+            this.detailNonSystemKey.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // hintToClear
+            // 
+            this.hintToClear.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1,
+            this.websiteToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem1.Text = "&About";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // websiteToolStripMenuItem
+            // 
+            this.websiteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myBlogToolStripMenuItem,
+            this.gitRepositoryToolStripMenuItem});
+            this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.websiteToolStripMenuItem.Text = "&Website";
+            // 
+            // myBlogToolStripMenuItem
+            // 
+            this.myBlogToolStripMenuItem.Name = "myBlogToolStripMenuItem";
+            this.myBlogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myBlogToolStripMenuItem.Text = "My Blog";
+            this.myBlogToolStripMenuItem.Click += new System.EventHandler(this.myBlogToolStripMenuItem_Click);
+            // 
+            // gitRepositoryToolStripMenuItem
+            // 
+            this.gitRepositoryToolStripMenuItem.Name = "gitRepositoryToolStripMenuItem";
+            this.gitRepositoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gitRepositoryToolStripMenuItem.Text = "Git Repository";
+            this.gitRepositoryToolStripMenuItem.Click += new System.EventHandler(this.gitRepositoryToolStripMenuItem_Click);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 78);
+            this.ClientSize = new System.Drawing.Size(276, 207);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.staticLabel2);
+            this.Controls.Add(this.staticLabel1);
+            this.Controls.Add(this.systemKeyLbl);
+            this.Controls.Add(this.nonSystemKeyLbl);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.countLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -185,6 +311,19 @@
         private System.Windows.Forms.ToolStripMenuItem SaveDataMainMenu;
         private System.Windows.Forms.ToolStripMenuItem loadDataMainMenu;
         private System.Windows.Forms.ToolStripMenuItem exitMainMenu;
+        private System.Windows.Forms.Label nonSystemKeyLbl;
+        private System.Windows.Forms.Label systemKeyLbl;
+        private System.Windows.Forms.Label staticLabel1;
+        private System.Windows.Forms.Label staticLabel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip detailNonSystemKey;
+        private System.Windows.Forms.ToolTip detailSystemKey;
+        private System.Windows.Forms.ToolTip hintToClear;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem websiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem myBlogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gitRepositoryToolStripMenuItem;
     }
 }
 

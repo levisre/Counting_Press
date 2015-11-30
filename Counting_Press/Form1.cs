@@ -2,13 +2,19 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Diagnostics;
 
 namespace Counting_Press
 {
     public partial class mainForm : Form
     {
         //The counter, set to long to avoid integer overflow, in case the number reached over 4 bilion
+        //Now plus 2 new counter, which are counter for Non-System Keys, and counter for System Key
+        //In fact, i only devided the total counter into 2 smart parts, that will be more easier to watch out
         static long noOfKeyPressed = 0;
+        static long noOfNonSystemKey = 0;
+        static long noOfSystemKey = 0;
+
         //Some basic string and variable
         public const string AboutMsg = "Counting Press v0.1 by Levis Nickaster\nWebsite: https://ltops9.wordpress.com\nThis is only a hobby project, so except bugs!";
         private const string postfixStr = " key(s) pressed";
@@ -85,10 +91,21 @@ namespace Counting_Press
         public static IntPtr hookProc(int code, IntPtr wparam, IntPtr lparam)
         {
             //key pressed and released?
-            if (code >= 0 && (wparam == (IntPtr)0x101|| wparam == (IntPtr)0x0105))
+            if (code >= 0)
             {
+                switch((int)wparam)
+                {
+                    case 0x101: //WM_KEYUP
+                        noOfNonSystemKey++;
+                        break;
+                    case 0x105: //WM_SYSKEYUP
+                        noOfSystemKey++;
+                        break;
+                    default:
+                        break;
+                }
                 //increase counter
-                noOfKeyPressed++;
+                noOfKeyPressed = noOfSystemKey + noOfNonSystemKey;
                 //parse the keyinput for other programs
                 return CallNextHookEx(hHook, code, (int)wparam, lparam);
             }
@@ -101,7 +118,33 @@ namespace Counting_Press
         //save counter to file
         private void SaveData()
         {
-            File.WriteAllText(datafilePath, noOfKeyPressed.ToString());
+            File.WriteAllText(datafilePath, noOfKeyPressed.ToString() + "\n" + noOfNonSystemKey.ToString() + "\n" + noOfSystemKey.ToString());
+        }
+
+        //read data form file and parse it to counter variables
+        private void ReadData()
+        {
+            try
+            {
+                string[] dataInput = File.ReadAllLines(datafilePath);
+                if(dataInput.Length!=3)
+                {
+                    throw new Exception("Data Corrupted!");
+                }
+                else
+                {
+                    noOfKeyPressed = Convert.ToInt32(dataInput[0]);
+                    noOfNonSystemKey = Convert.ToInt32(dataInput[1]);
+                    noOfSystemKey = Convert.ToInt32(dataInput[2]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+            
+
         }
 
         //Prevent close form, minimize it and run in background
@@ -132,6 +175,8 @@ namespace Counting_Press
         private void Form1_Activated(object sender, EventArgs e)
         {
             countLbl.Text = noOfKeyPressed.ToString();
+            nonSystemKeyLbl.Text = noOfNonSystemKey.ToString();
+            systemKeyLbl.Text = noOfSystemKey.ToString();
         }
 
         // Clear the counter when doubleclick on the counter label in main form
@@ -141,11 +186,15 @@ namespace Counting_Press
             {
                 case DialogResult.Yes:
                     noOfKeyPressed = 0;
+                    noOfSystemKey = 0;
+                    noOfNonSystemKey = 0;
+                    countLbl.Text = noOfKeyPressed.ToString();
+                    nonSystemKeyLbl.Text = noOfNonSystemKey.ToString();
+                    systemKeyLbl.Text = noOfSystemKey.ToString();
                     break;
                 case DialogResult.No:
                     break;
             }
-            countLbl.Text = noOfKeyPressed.ToString();
         }
 
         //When double click on the tray icon, open the main Form
@@ -206,8 +255,24 @@ namespace Counting_Press
         //Load Saved Data when click Load Data in Main Menu
         private void loadDataMainMenu_Click(object sender, EventArgs e)
         {
-            noOfKeyPressed = Convert.ToInt32(File.ReadAllText(datafilePath));
-            countLbl.Text = noOfKeyPressed.ToString();
+            ReadData();
+            Form1_Activated(null, null);
+        }
+
+        //About stuffs, nothing importan
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            aboutToolStripMenuItem_Click(sender, e);
+        }
+
+        private void myBlogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://ltops9.wordpress.com");
+        }
+
+        private void gitRepositoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/levisre/Counting_Press");
         }
     }
 }
