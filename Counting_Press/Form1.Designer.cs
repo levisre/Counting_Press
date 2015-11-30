@@ -42,19 +42,21 @@
             this.SaveDataMainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.loadDataMainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMainMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.nonSystemKeyLbl = new System.Windows.Forms.Label();
-            this.systemKeyLbl = new System.Windows.Forms.Label();
-            this.staticLabel1 = new System.Windows.Forms.Label();
-            this.staticLabel2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.detailSystemKey = new System.Windows.Forms.ToolTip(this.components);
-            this.detailNonSystemKey = new System.Windows.Forms.ToolTip(this.components);
-            this.hintToClear = new System.Windows.Forms.ToolTip(this.components);
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myBlogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nonSystemKeyLbl = new System.Windows.Forms.Label();
+            this.systemKeyLbl = new System.Windows.Forms.Label();
+            this.staticLabel1 = new System.Windows.Forms.Label();
+            this.staticLabel2 = new System.Windows.Forms.Label();
+            this.staticLabel3 = new System.Windows.Forms.Label();
+            this.sharedTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.leftMouseLbl = new System.Windows.Forms.Label();
+            this.staticLabel4 = new System.Windows.Forms.Label();
+            this.staticLabel5 = new System.Windows.Forms.Label();
+            this.rightMouseLbl = new System.Windows.Forms.Label();
             this.contextMenu.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -116,7 +118,7 @@
             this.countLbl.TabIndex = 3;
             this.countLbl.Text = "0";
             this.countLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.hintToClear.SetToolTip(this.countLbl, "Double click here to Clear the counter");
+            this.sharedTooltip.SetToolTip(this.countLbl, "Total Number of Key Pressed. Double Click to clear data");
             this.countLbl.DoubleClick += new System.EventHandler(this.countLbl_DoubleClick);
             // 
             // mainMenu
@@ -143,7 +145,7 @@
             // SaveDataMainMenu
             // 
             this.SaveDataMainMenu.Name = "SaveDataMainMenu";
-            this.SaveDataMainMenu.Size = new System.Drawing.Size(152, 22);
+            this.SaveDataMainMenu.Size = new System.Drawing.Size(127, 22);
             this.SaveDataMainMenu.Text = "&Save Data";
             this.SaveDataMainMenu.ToolTipText = "Save the Counter to file, located along side with this program";
             this.SaveDataMainMenu.Click += new System.EventHandler(this.SaveDataMainMenu_Click);
@@ -151,7 +153,7 @@
             // loadDataMainMenu
             // 
             this.loadDataMainMenu.Name = "loadDataMainMenu";
-            this.loadDataMainMenu.Size = new System.Drawing.Size(152, 22);
+            this.loadDataMainMenu.Size = new System.Drawing.Size(127, 22);
             this.loadDataMainMenu.Text = "&Load Data";
             this.loadDataMainMenu.ToolTipText = "Load the previous saved Counter data";
             this.loadDataMainMenu.Click += new System.EventHandler(this.loadDataMainMenu_Click);
@@ -159,9 +161,48 @@
             // exitMainMenu
             // 
             this.exitMainMenu.Name = "exitMainMenu";
-            this.exitMainMenu.Size = new System.Drawing.Size(152, 22);
+            this.exitMainMenu.Size = new System.Drawing.Size(127, 22);
             this.exitMainMenu.Text = "&Exit";
             this.exitMainMenu.Click += new System.EventHandler(this.exitMainMenu_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1,
+            this.websiteToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.aboutToolStripMenuItem1.Text = "&About";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // websiteToolStripMenuItem
+            // 
+            this.websiteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myBlogToolStripMenuItem,
+            this.gitRepositoryToolStripMenuItem});
+            this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.websiteToolStripMenuItem.Text = "&Website";
+            // 
+            // myBlogToolStripMenuItem
+            // 
+            this.myBlogToolStripMenuItem.Name = "myBlogToolStripMenuItem";
+            this.myBlogToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.myBlogToolStripMenuItem.Text = "My Blog";
+            this.myBlogToolStripMenuItem.Click += new System.EventHandler(this.myBlogToolStripMenuItem_Click);
+            // 
+            // gitRepositoryToolStripMenuItem
+            // 
+            this.gitRepositoryToolStripMenuItem.Name = "gitRepositoryToolStripMenuItem";
+            this.gitRepositoryToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.gitRepositoryToolStripMenuItem.Text = "Git Repository";
+            this.gitRepositoryToolStripMenuItem.Click += new System.EventHandler(this.gitRepositoryToolStripMenuItem_Click);
             // 
             // nonSystemKeyLbl
             // 
@@ -173,19 +214,19 @@
             this.nonSystemKeyLbl.TabIndex = 5;
             this.nonSystemKeyLbl.Text = "0";
             this.nonSystemKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.detailNonSystemKey.SetToolTip(this.nonSystemKeyLbl, "Non System Key is all the key shown in the Keyboard");
+            this.sharedTooltip.SetToolTip(this.nonSystemKeyLbl, "Number of keys pressed (non System key is all the keys appear in your keyboard)");
             // 
             // systemKeyLbl
             // 
             this.systemKeyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.systemKeyLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.systemKeyLbl.Location = new System.Drawing.Point(4, 175);
+            this.systemKeyLbl.Location = new System.Drawing.Point(0, 175);
             this.systemKeyLbl.Name = "systemKeyLbl";
-            this.systemKeyLbl.Size = new System.Drawing.Size(272, 36);
+            this.systemKeyLbl.Size = new System.Drawing.Size(276, 36);
             this.systemKeyLbl.TabIndex = 6;
             this.systemKeyLbl.Text = "0";
             this.systemKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.detailSystemKey.SetToolTip(this.systemKeyLbl, "System Key recognized when you pressing key with Alt Key is being held down");
+            this.sharedTooltip.SetToolTip(this.systemKeyLbl, "System Key recognized when you pressing key with Alt Key is being held down");
             // 
             // staticLabel1
             // 
@@ -207,73 +248,76 @@
             this.staticLabel2.TabIndex = 8;
             this.staticLabel2.Text = "Total Non-System Keys pressed";
             // 
-            // label1
+            // staticLabel3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 153);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Total System Keys Pressed";
+            this.staticLabel3.AutoSize = true;
+            this.staticLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staticLabel3.Location = new System.Drawing.Point(4, 153);
+            this.staticLabel3.Name = "staticLabel3";
+            this.staticLabel3.Size = new System.Drawing.Size(160, 13);
+            this.staticLabel3.TabIndex = 9;
+            this.staticLabel3.Text = "Total System Keys Pressed";
             // 
-            // detailSystemKey
+            // sharedTooltip
             // 
-            this.detailSystemKey.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.sharedTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // detailNonSystemKey
+            // leftMouseLbl
             // 
-            this.detailNonSystemKey.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.leftMouseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftMouseLbl.ForeColor = System.Drawing.Color.Teal;
+            this.leftMouseLbl.Location = new System.Drawing.Point(0, 238);
+            this.leftMouseLbl.Name = "leftMouseLbl";
+            this.leftMouseLbl.Size = new System.Drawing.Size(276, 38);
+            this.leftMouseLbl.TabIndex = 10;
+            this.leftMouseLbl.Text = "0";
+            this.leftMouseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sharedTooltip.SetToolTip(this.leftMouseLbl, "Number of Left Mouse Button Clicked. Double clcik to clear data");
+            this.leftMouseLbl.DoubleClick += new System.EventHandler(this.leftMouseLbl_DoubleClick);
             // 
-            // hintToClear
+            // staticLabel4
             // 
-            this.hintToClear.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.staticLabel4.AutoSize = true;
+            this.staticLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staticLabel4.Location = new System.Drawing.Point(4, 211);
+            this.staticLabel4.Name = "staticLabel4";
+            this.staticLabel4.Size = new System.Drawing.Size(208, 13);
+            this.staticLabel4.TabIndex = 11;
+            this.staticLabel4.Text = "Total of Left Mouse Button clicked:";
             // 
-            // helpToolStripMenuItem
+            // staticLabel5
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1,
-            this.websiteToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
+            this.staticLabel5.AutoSize = true;
+            this.staticLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staticLabel5.Location = new System.Drawing.Point(4, 285);
+            this.staticLabel5.Name = "staticLabel5";
+            this.staticLabel5.Size = new System.Drawing.Size(208, 13);
+            this.staticLabel5.TabIndex = 13;
+            this.staticLabel5.Text = "Total of Left Mouse Button clicked:";
             // 
-            // aboutToolStripMenuItem1
+            // rightMouseLbl
             // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem1.Text = "&About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-            // 
-            // websiteToolStripMenuItem
-            // 
-            this.websiteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.myBlogToolStripMenuItem,
-            this.gitRepositoryToolStripMenuItem});
-            this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
-            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.websiteToolStripMenuItem.Text = "&Website";
-            // 
-            // myBlogToolStripMenuItem
-            // 
-            this.myBlogToolStripMenuItem.Name = "myBlogToolStripMenuItem";
-            this.myBlogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.myBlogToolStripMenuItem.Text = "My Blog";
-            this.myBlogToolStripMenuItem.Click += new System.EventHandler(this.myBlogToolStripMenuItem_Click);
-            // 
-            // gitRepositoryToolStripMenuItem
-            // 
-            this.gitRepositoryToolStripMenuItem.Name = "gitRepositoryToolStripMenuItem";
-            this.gitRepositoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.gitRepositoryToolStripMenuItem.Text = "Git Repository";
-            this.gitRepositoryToolStripMenuItem.Click += new System.EventHandler(this.gitRepositoryToolStripMenuItem_Click);
+            this.rightMouseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightMouseLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rightMouseLbl.Location = new System.Drawing.Point(0, 310);
+            this.rightMouseLbl.Name = "rightMouseLbl";
+            this.rightMouseLbl.Size = new System.Drawing.Size(276, 38);
+            this.rightMouseLbl.TabIndex = 12;
+            this.rightMouseLbl.Text = "0";
+            this.rightMouseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sharedTooltip.SetToolTip(this.rightMouseLbl, "Number of Right Mouse Button Clicked. Double clcik to clear data");
+            this.rightMouseLbl.DoubleClick += new System.EventHandler(this.rightMouseLbl_DoubleClick);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 207);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(276, 344);
+            this.Controls.Add(this.staticLabel5);
+            this.Controls.Add(this.rightMouseLbl);
+            this.Controls.Add(this.staticLabel4);
+            this.Controls.Add(this.leftMouseLbl);
+            this.Controls.Add(this.staticLabel3);
             this.Controls.Add(this.staticLabel2);
             this.Controls.Add(this.staticLabel1);
             this.Controls.Add(this.systemKeyLbl);
@@ -315,15 +359,17 @@
         private System.Windows.Forms.Label systemKeyLbl;
         private System.Windows.Forms.Label staticLabel1;
         private System.Windows.Forms.Label staticLabel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolTip detailNonSystemKey;
-        private System.Windows.Forms.ToolTip detailSystemKey;
-        private System.Windows.Forms.ToolTip hintToClear;
+        private System.Windows.Forms.Label staticLabel3;
+        private System.Windows.Forms.ToolTip sharedTooltip;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem websiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myBlogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gitRepositoryToolStripMenuItem;
+        private System.Windows.Forms.Label leftMouseLbl;
+        private System.Windows.Forms.Label staticLabel4;
+        private System.Windows.Forms.Label staticLabel5;
+        private System.Windows.Forms.Label rightMouseLbl;
     }
 }
 
