@@ -54,9 +54,9 @@
             this.staticLabel3 = new System.Windows.Forms.Label();
             this.sharedTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.leftMouseLbl = new System.Windows.Forms.Label();
+            this.rightMouseLbl = new System.Windows.Forms.Label();
             this.staticLabel4 = new System.Windows.Forms.Label();
             this.staticLabel5 = new System.Windows.Forms.Label();
-            this.rightMouseLbl = new System.Windows.Forms.Label();
             this.contextMenu.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -275,6 +275,19 @@
             this.sharedTooltip.SetToolTip(this.leftMouseLbl, "Number of Left Mouse Button Clicked. Double clcik to clear data");
             this.leftMouseLbl.DoubleClick += new System.EventHandler(this.leftMouseLbl_DoubleClick);
             // 
+            // rightMouseLbl
+            // 
+            this.rightMouseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightMouseLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rightMouseLbl.Location = new System.Drawing.Point(0, 310);
+            this.rightMouseLbl.Name = "rightMouseLbl";
+            this.rightMouseLbl.Size = new System.Drawing.Size(276, 38);
+            this.rightMouseLbl.TabIndex = 12;
+            this.rightMouseLbl.Text = "0";
+            this.rightMouseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sharedTooltip.SetToolTip(this.rightMouseLbl, "Number of Right Mouse Button Clicked. Double clcik to clear data");
+            this.rightMouseLbl.DoubleClick += new System.EventHandler(this.rightMouseLbl_DoubleClick);
+            // 
             // staticLabel4
             // 
             this.staticLabel4.AutoSize = true;
@@ -291,22 +304,9 @@
             this.staticLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.staticLabel5.Location = new System.Drawing.Point(4, 285);
             this.staticLabel5.Name = "staticLabel5";
-            this.staticLabel5.Size = new System.Drawing.Size(208, 13);
+            this.staticLabel5.Size = new System.Drawing.Size(216, 13);
             this.staticLabel5.TabIndex = 13;
-            this.staticLabel5.Text = "Total of Left Mouse Button clicked:";
-            // 
-            // rightMouseLbl
-            // 
-            this.rightMouseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightMouseLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.rightMouseLbl.Location = new System.Drawing.Point(0, 310);
-            this.rightMouseLbl.Name = "rightMouseLbl";
-            this.rightMouseLbl.Size = new System.Drawing.Size(276, 38);
-            this.rightMouseLbl.TabIndex = 12;
-            this.rightMouseLbl.Text = "0";
-            this.rightMouseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.sharedTooltip.SetToolTip(this.rightMouseLbl, "Number of Right Mouse Button Clicked. Double clcik to clear data");
-            this.rightMouseLbl.DoubleClick += new System.EventHandler(this.rightMouseLbl_DoubleClick);
+            this.staticLabel5.Text = "Total of Right Mouse Button clicked:";
             // 
             // mainForm
             // 
